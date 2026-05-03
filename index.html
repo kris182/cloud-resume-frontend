@@ -2,404 +2,1036 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hari Krishnah S — Resume</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            teal: {
-              primary: '#0f766e',
-              light: '#ccfbf1',
-              mid: '#14b8a6',
-            },
-            slate: {
-              bg: '#f8fafc',
-              dark: '#1e2937',
-              mid: '#64748b',
-            }
-          },
-          fontFamily: {
-            serif: ['DM Serif Display', 'Georgia', 'serif'],
-            sans: ['DM Sans', 'system-ui', 'sans-serif'],
-          }
-        }
-      }
-    }
-  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krishna Bhattad — Cloud Engineer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
   <style>
+    /* ═══════════════════════════════════════════════
+       Krishna Bhattad — Portfolio
+       Theme: Dark terminal / cloud engineering
+       Fonts: Syne (display) + JetBrains Mono (mono)
+    ═══════════════════════════════════════════════ */
+
+    /* ── Variables ── */
+    :root {
+      --bg:        #0d0f14;
+      --bg-alt:    #111318;
+      --surface:   #181b22;
+      --border:    #23272f;
+      --ink:       #e8eaf0;
+      --muted:     #6b7280;
+      --accent:    #00d4aa;
+      --accent2:   #3b82f6;
+      --warn:      #f59e0b;
+      --red:       #ef4444;
+      --purple:    #a78bfa;
+
+      --font-display: 'Syne', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+
+      --radius: 6px;
+      --max-w:  1100px;
+      --nav-h:  64px;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
     body {
-      background-color: #f8fafc;
-      color: #1e2937;
-      font-family: 'DM Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
     }
-    .section-title {
-      font-family: 'DM Serif Display', Georgia, serif;
-      color: #0f766e;
-      font-size: 1.25rem;
-      letter-spacing: 0.01em;
-      border-bottom: 2px solid #ccfbf1;
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.25rem;
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Container ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
     }
-    .name-heading {
-      font-family: 'DM Serif Display', Georgia, serif;
+
+    /* ══════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════ */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s;
     }
-    .contact-link {
-      color: #0f766e;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.15s;
-      text-decoration: none;
-      display: inline-flex;
+
+    .navbar.scrolled {
+      background: rgba(13, 15, 20, 0.92);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 100%;
+      display: flex;
       align-items: center;
-      gap: 0.3rem;
+      justify-content: space-between;
     }
-    .contact-link:hover { color: #14b8a6; }
-    .skill-tag {
-      background: #ccfbf1;
-      color: #0f766e;
-      border-radius: 4px;
-      padding: 2px 10px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      display: inline-block;
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--accent);
+      letter-spacing: -0.02em;
     }
-    .bullet-item {
-      position: relative;
-      padding-left: 1.1rem;
-      color: #374151;
-      font-size: 0.88rem;
-      line-height: 1.6;
+    .nav-logo .dot { color: var(--ink); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
     }
-    .bullet-item::before {
-      content: '▸';
-      position: absolute;
-      left: 0;
-      color: #0f766e;
+
+    .nav-links a {
       font-size: 0.75rem;
-      top: 2px;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      transition: color 0.2s;
     }
-    .card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1.25rem 1.5rem;
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-cta {
+      color: var(--accent) !important;
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius);
+    }
+    .nav-cta:hover { background: var(--accent) !important; color: var(--bg) !important; }
+
+    /* Visitor counter in navbar top-right */
+    .nav-counter {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--accent);
+      background: rgba(0,212,170,0.08);
+      border: 1px solid rgba(0,212,170,0.25);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+    }
+    .nav-counter-icon { font-size: 0.8rem; }
+
+    /* Mobile hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 4rem) 2rem 5rem;
+      overflow: hidden;
+    }
+
+    /* Dot-grid background texture */
+    .hero-bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, #23272f 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+    .hero-name span { color: var(--accent); }
+
+    .hero-role {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-sub {
+      font-size: 0.82rem;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.25s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.6rem;
+      border-radius: var(--radius);
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: var(--bg); }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-ghost { border-color: var(--border); color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--muted); color: var(--ink); }
+
+    /* ── Keyframes ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════
+       SECTIONS — shared
+    ══════════════════════════════════════ */
+    .section     { padding: 6rem 0; }
+    .section-alt { background: var(--bg-alt); }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-tag {
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ══════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════ */
+    .about-body p {
+      color: var(--muted);
+      max-width: 700px;
       margin-bottom: 1rem;
     }
-    .card:last-child { margin-bottom: 0; }
-    .section { margin-bottom: 2.25rem; }
-    .counter-box {
-      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
-      color: white;
-      border-radius: 12px;
-      padding: 1.5rem 2rem;
+    .about-body p strong { color: var(--ink); }
+
+    .about-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat { display: flex; flex-direction: column; gap: 0.2rem; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════════
+       SKILLS
+    ══════════════════════════════════════ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+
+    .skill-group-title {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .tag {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 3px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { color: var(--ink); border-color: var(--muted); }
+
+    /* Category-coloured tags */
+    .tag-cloud  { border-color: rgba(0,212,170,0.25);  color: var(--accent); }
+    .tag-back   { border-color: rgba(59,130,246,0.25); color: var(--accent2); }
+    .tag-front  { border-color: rgba(245,158,11,0.25); color: var(--warn); }
+    .tag-db     { border-color: rgba(239,68,68,0.25);  color: var(--red); }
+    .tag-lang   { border-color: rgba(167,139,250,0.25);color: var(--purple); }
+    .tag-tool   { border-color: var(--border);          color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       PROJECTS
+    ══════════════════════════════════════ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    /* Featured project spans both columns */
+    .project-featured { grid-column: 1 / -1; }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    /* Animated top bar on hover */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .project-card:hover::before  { transform: scaleX(1); }
+    .project-card:hover {
+      border-color: rgba(0,212,170,0.3);
+      transform: translateY(-3px);
+    }
+
+    .project-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .project-num  { font-size: 0.62rem; color: var(--accent); letter-spacing: 0.14em; }
+    .project-link { font-size: 0.72rem; color: var(--muted); transition: color 0.2s; }
+    .project-link:hover { color: var(--accent); }
+
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .project-year { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.08em; margin-top: auto; }
+
+    /* ══════════════════════════════════════
+       EXPERIENCE / TIMELINE
+    ══════════════════════════════════════ */
+    .timeline { display: flex; flex-direction: column; gap: 2rem; }
+
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .timeline-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.35rem;
+      box-shadow: 0 0 0 3px rgba(0,212,170,0.15);
+    }
+
+    .timeline-body { flex: 1; }
+
+    .timeline-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-role {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .timeline-company { font-size: 0.78rem; color: var(--accent); }
+    .timeline-desc    { font-size: 0.82rem; color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       EDUCATION
+    ══════════════════════════════════════ */
+    .edu-card {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+
+    .edu-icon   { font-size: 2rem; flex-shrink: 0; }
+    .edu-school {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .edu-degree { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .edu-meta   { font-size: 0.75rem; color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       CERTIFICATIONS
+    ══════════════════════════════════════ */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .cert-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      transition: border-color 0.2s;
+    }
+    .cert-card:hover    { border-color: var(--accent); }
+    .cert-inprogress    { border-style: dashed; }
+
+    .cert-icon   { font-size: 1.4rem; }
+    .cert-name   { font-size: 0.85rem; color: var(--ink); font-weight: 500; }
+    .cert-issuer { font-size: 0.72rem; color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════ */
+    .contact-intro {
+      font-size: 0.88rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 0.9rem 1.2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 480px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-item:hover { border-color: var(--accent); color: var(--ink); }
+
+    .contact-icon {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.78rem;
+      color: var(--accent);
+      width: 1.2rem;
       text-align: center;
     }
-    @media print {
-      .no-print { display: none; }
-      body { background: white; }
-      .card { box-shadow: none; border: 1px solid #e2e8f0; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-name    { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+    .footer-copy,
+    .footer-updated { font-size: 0.7rem; color: var(--muted); }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem 2rem;
+        gap: 1.5rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle     { display: flex; }
+
+      .projects-grid  { grid-template-columns: 1fr; }
+      .project-featured { grid-column: 1; }
+      .about-stats    { gap: 2rem; }
+      .footer-inner   { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+      .hero      { padding: calc(var(--nav-h) + 3rem) 1.25rem 4rem; }
+      .section   { padding: 4rem 0; }
+      .skills-grid  { grid-template-columns: 1fr; }
+      .cert-grid    { grid-template-columns: 1fr; }
+      .edu-card     { flex-direction: column; }
     }
   </style>
 </head>
-<body class="min-h-screen py-8 px-4">
+<body>
 
-  <!-- Page Wrapper -->
-  <div class="max-w-3xl mx-auto">
-
-    <!-- ═══════════════════════════════════════
-         HEADER
-    ═══════════════════════════════════════ -->
-    <div class="bg-white border border-slate-200 rounded-2xl px-8 py-7 mb-6 shadow-sm">
-
-      <!-- Name & Title -->
-      <div class="mb-4">
-        <h1 class="name-heading text-4xl md:text-5xl text-slate-dark leading-tight">Hari Krishnah S</h1>
-        <p class="text-slate-mid font-medium mt-1 text-sm tracking-wide uppercase">B.Tech Information Technology · Batch 2027</p>
-        <p class="text-slate-mid text-sm mt-0.5">St. Joseph's College of Engineering, Chennai</p>
+  <!-- ══ NAVBAR ══ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">KB<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <!-- Visitor counter pinned to top-right of navbar -->
+      <div class="nav-counter">
+        <span class="nav-counter-icon">👁</span>
+        <span id="visitor-count">—</span>
       </div>
-
-      <!-- Divider -->
-      <div class="border-t border-slate-100 my-4"></div>
-
-      <!-- Contact Links -->
-      <div class="flex flex-wrap gap-x-5 gap-y-2">
-
-        <!-- Phone -->
-        <a href="tel:+917200243505" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          +91 7200243505
-        </a>
-
-        <!-- Email -->
-        <a href="mailto:777harikrishnah@gmail.com" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          777harikrishnah@gmail.com
-        </a>
-
-        <!-- GitHub -->
-        <a href="https://github.com/harikrishnahh" target="_blank" rel="noopener" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
-          github.com/harikrishnahh
-        </a>
-
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/harikrishnah-s" target="_blank" rel="noopener" class="contact-link">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          linkedin.com/in/harikrishnah-s
-        </a>
-
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <!-- END HEADER -->
+  </nav>
 
+  <main>
 
-    <!-- ═══════════════════════════════════════
-         EDUCATION SECTION
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <h2 class="section-title">Education</h2>
-
-      <!-- EDUCATION SECTION -->
-      <div class="card">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-          <div>
-            <h3 class="font-semibold text-slate-dark text-base">B.Tech in Information Technology</h3>
-            <p class="text-slate-mid text-sm mt-0.5">St. Joseph's College of Engineering, Chennai</p>
-          </div>
-          <div class="text-right shrink-0">
-            <span class="skill-tag">2023 – 2027</span>
-            <p class="text-slate-mid text-xs mt-1">CGPA: <span class="font-semibold text-teal-primary">7.84 / 10.0</span></p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <!-- END EDUCATION -->
-
-
-    <!-- ═══════════════════════════════════════
-         SKILLS SECTION
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <h2 class="section-title">Skills</h2>
-
-      <!-- SKILLS SECTION -->
-      <div class="card">
-        <div class="space-y-3">
-
-          <div class="flex flex-wrap items-start gap-y-2">
-            <span class="text-xs font-semibold text-slate-mid uppercase tracking-wider w-44 shrink-0 pt-0.5">Languages</span>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag">C</span>
-              <span class="skill-tag">Java</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">JavaScript</span>
-            </div>
-          </div>
-
-          <div class="border-t border-slate-50"></div>
-
-          <div class="flex flex-wrap items-start gap-y-2">
-            <span class="text-xs font-semibold text-slate-mid uppercase tracking-wider w-44 shrink-0 pt-0.5">Web Technologies</span>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag">React.js</span>
-              <span class="skill-tag">HTML5</span>
-              <span class="skill-tag">CSS3</span>
-              <span class="skill-tag">Tailwind CSS</span>
-              <span class="skill-tag">Node.js</span>
-            </div>
-          </div>
-
-          <div class="border-t border-slate-50"></div>
-
-          <div class="flex flex-wrap items-start gap-y-2">
-            <span class="text-xs font-semibold text-slate-mid uppercase tracking-wider w-44 shrink-0 pt-0.5">Cloud & DevOps</span>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag">AWS</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub Actions</span>
-              <span class="skill-tag">Docker (learning)</span>
-            </div>
-          </div>
-
-          <div class="border-t border-slate-50"></div>
-
-          <div class="flex flex-wrap items-start gap-y-2">
-            <span class="text-xs font-semibold text-slate-mid uppercase tracking-wider w-44 shrink-0 pt-0.5">Databases</span>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag">MongoDB</span>
-              <span class="skill-tag">SQL</span>
-              <span class="skill-tag">DynamoDB</span>
-              <span class="skill-tag">DSA</span>
-            </div>
-          </div>
-
-          <div class="border-t border-slate-50"></div>
-
-          <div class="flex flex-wrap items-start gap-y-2">
-            <span class="text-xs font-semibold text-slate-mid uppercase tracking-wider w-44 shrink-0 pt-0.5">Tools & Others</span>
-            <div class="flex flex-wrap gap-2">
-              <span class="skill-tag">VS Code</span>
-              <span class="skill-tag">Power BI</span>
-              <span class="skill-tag">Tableau</span>
-              <span class="skill-tag">ML Basics</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-    <!-- END SKILLS -->
-
-
-    <!-- ═══════════════════════════════════════
-         PROJECTS SECTION
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <h2 class="section-title">Projects</h2>
-
-      <!-- PROJECTS SECTION -->
-
-      <!-- Project 1 -->
-      <div class="card">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
-          <h3 class="font-semibold text-slate-dark text-base">AWS Cloud Resume Website</h3>
-          <span class="skill-tag shrink-0">2026</span>
-        </div>
-        <ul class="space-y-1.5">
-          <li class="bullet-item">Built and deployed a serverless personal resume on AWS using S3, CloudFront, Lambda, DynamoDB, and API Gateway with GitHub Actions CI/CD.</li>
-          <li class="bullet-item">Implemented a live visitor counter with secure static hosting; significantly reduced deployment time.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-3">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">AWS Free Tier</span>
-          <span class="skill-tag">Tailwind CSS</span>
-        </div>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="card">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
-          <h3 class="font-semibold text-slate-dark text-base">Full-Stack Task Management Application</h3>
-          <span class="skill-tag shrink-0">2026</span>
-        </div>
-        <ul class="space-y-1.5">
-          <li class="bullet-item">Developed a responsive task tracker with JWT authentication, CRUD operations, and real-time updates.</li>
-          <li class="bullet-item">Added task categorization, status tracking, and mobile-friendly UI.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-3">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">Express</span>
-          <span class="skill-tag">MongoDB</span>
-        </div>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="card">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-3">
-          <h3 class="font-semibold text-slate-dark text-base">Secure Authentication System</h3>
-          <span class="skill-tag shrink-0">2025</span>
-        </div>
-        <ul class="space-y-1.5">
-          <li class="bullet-item">Implemented JWT-based login with protection against common web vulnerabilities (XSS, CSRF).</li>
-          <li class="bullet-item">Added input validation and secure password hashing using bcrypt.</li>
-        </ul>
-        <div class="flex flex-wrap gap-2 mt-3">
-          <span class="skill-tag">React</span>
-          <span class="skill-tag">Node.js</span>
-          <span class="skill-tag">bcrypt</span>
-        </div>
-      </div>
-
-    </div>
-    <!-- END PROJECTS -->
-
-
-    <!-- ═══════════════════════════════════════
-         EXPERIENCE SECTION
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <h2 class="section-title">Experience</h2>
-
-      <!-- EXPERIENCE SECTION -->
-      <div class="card">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
-          <div>
-            <h3 class="font-semibold text-slate-dark text-base">Full-Stack Development Intern</h3>
-            <p class="text-slate-mid text-sm mt-0.5">Seyasoft Technologies</p>
-          </div>
-          <span class="skill-tag shrink-0 self-start">Internship</span>
-        </div>
-        <p class="bullet-item mt-3">Internship focused on Full Stack Development, gaining hands-on experience building and deploying web applications.</p>
-      </div>
-
-    </div>
-    <!-- END EXPERIENCE -->
-
-
-    <!-- ═══════════════════════════════════════
-         CERTIFICATIONS SECTION
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <h2 class="section-title">Certifications</h2>
-
-      <!-- CERTIFICATIONS SECTION -->
-      <div class="card">
-        <ul class="space-y-2">
-          <li class="bullet-item">Database Management System — <span class="font-medium text-slate-dark">NPTEL</span></li>
-          <li class="bullet-item">Data Structures and Algorithms Using Java — <span class="font-medium text-slate-dark">Infosys Springboard</span></li>
-          <li class="bullet-item">
-            AWS Cloud Practitioner —
-            <span class="inline-flex items-center gap-1 text-amber-600 font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-              In Progress
-            </span>
-          </li>
-        </ul>
-      </div>
-
-    </div>
-    <!-- END CERTIFICATIONS -->
-
-
-    <!-- ═══════════════════════════════════════
-         LIVE VISITOR COUNTER
-    ═══════════════════════════════════════ -->
-    <div class="section">
-      <div class="counter-box">
-        <p class="text-teal-100 text-xs font-semibold uppercase tracking-widest mb-1">Live Visitor Count</p>
-        <p id="visitor-count" class="text-5xl font-bold tracking-tight mb-1">1,248</p>
-        <p class="text-teal-100 text-xs mt-2">
-          Connected to <span class="font-semibold text-white">AWS Lambda + DynamoDB</span> via API Gateway
+    <!-- ══ HERO ══ -->
+    <section class="hero" id="hero">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-grid">
+        <div class="hero-tag">Available for Internship + Full-Time · Chennai, India</div>
+        <h1 class="hero-name">Krishna<br><span>Bhattad</span></h1>
+        <p class="hero-role">Cloud Engineer &amp; Full-Stack Developer</p>
+        <p class="hero-sub">
+          Building serverless infrastructure on AWS · MERN stack applications · B.Tech IT, Batch 2027
         </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact"  class="btn btn-ghost">Get In Touch</a>
+        </div>
+
       </div>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">01</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-body">
+          <p>
+            I'm a third-year B.Tech IT student at St. Joseph's College of Engineering, Chennai, with a
+            strong focus on <strong>cloud infrastructure and full-stack development</strong>. I build and deploy
+            production-ready applications on AWS — from serverless APIs to CI/CD pipelines — and I'm
+            actively pursuing a cloud engineering internship where I can solve real infrastructure problems.
+          </p>
+          <p>
+            I've completed the AWS Cloud Resume Challenge: a serverless resume site backed by
+            S3, CloudFront, Lambda, DynamoDB, API Gateway, and GitHub Actions. I hold an AWS Academy
+            certification and am preparing for the AWS Cloud Practitioner (CLF-C02) exam.
+          </p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">3+</span>
+              <span class="stat-label">Projects Deployed</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">7+</span>
+              <span class="stat-label">AWS Services</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">2027</span>
+              <span class="stat-label">Graduation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SKILLS ══ -->
+    <section class="section section-alt" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">02</span>
+          <h2 class="section-title">Skills</h2>
+        </div>
+        <div class="skills-grid">
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">☁ Cloud &amp; DevOps</h3>
+            <div class="tags">
+              <span class="tag tag-cloud">S3</span>
+              <span class="tag tag-cloud">EC2</span>
+              <span class="tag tag-cloud">Lambda</span>
+              <span class="tag tag-cloud">CloudFront</span>
+              <span class="tag tag-cloud">API Gateway</span>
+              <span class="tag tag-cloud">DynamoDB</span>
+              <span class="tag tag-cloud">Docker</span>
+              <span class="tag tag-cloud">Kubernetes</span>
+              <span class="tag tag-cloud">GitHub Actions</span>
+              <span class="tag tag-cloud">CI/CD</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">⚙ Backend</h3>
+            <div class="tags">
+              <span class="tag tag-back">Node.js</span>
+              <span class="tag tag-back">Express.js</span>
+              <span class="tag tag-back">Python</span>
+              <span class="tag tag-back">REST APIs</span>
+              <span class="tag tag-back">JWT</span>
+              <span class="tag tag-back">bcrypt</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">◈ Frontend</h3>
+            <div class="tags">
+              <span class="tag tag-front">React.js</span>
+              <span class="tag tag-front">HTML5</span>
+              <span class="tag tag-front">CSS3</span>
+              <span class="tag tag-front">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">🗄 Databases</h3>
+            <div class="tags">
+              <span class="tag tag-db">MongoDB</span>
+              <span class="tag tag-db">DynamoDB</span>
+              <span class="tag tag-db">SQL</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">◻ Languages</h3>
+            <div class="tags">
+              <span class="tag tag-lang">Java</span>
+              <span class="tag tag-lang">Python</span>
+              <span class="tag tag-lang">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <h3 class="skill-group-title">⚡ Tools</h3>
+            <div class="tags">
+              <span class="tag tag-tool">Git</span>
+              <span class="tag tag-tool">GitHub</span>
+              <span class="tag tag-tool">Linux</span>
+              <span class="tag tag-tool">VS Code</span>
+              <span class="tag tag-tool">Power BI</span>
+              <span class="tag tag-tool">Tableau</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PROJECTS ══ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">03</span>
+          <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="projects-grid">
+
+          <!-- Featured: Cloud Resume Challenge -->
+          <div class="project-card project-featured">
+            <div class="project-card-header">
+              <span class="project-num">01 — FEATURED</span>
+              <a href="https://github.com/krishnabhattad" target="_blank" class="project-link">GitHub ↗</a>
+            </div>
+            <h3 class="project-title">AWS Cloud Resume Website</h3>
+            <p class="project-desc">
+              Serverless personal portfolio built for the Cloud Resume Challenge. Resume files are
+              stored on <strong>S3</strong> and served globally via <strong>CloudFront</strong> with HTTPS and a custom domain.
+              A <strong>DynamoDB</strong>-backed visitor counter increments on every page load through a
+              <strong>Lambda</strong> function exposed via <strong>API Gateway</strong>. Infrastructure is defined as code
+              and deployed automatically via <strong>GitHub Actions</strong> CI/CD on every push.
+            </p>
+            <div class="project-tech">
+              <span class="tag tag-cloud">S3</span>
+              <span class="tag tag-cloud">CloudFront</span>
+              <span class="tag tag-cloud">Lambda</span>
+              <span class="tag tag-cloud">DynamoDB</span>
+              <span class="tag tag-cloud">API Gateway</span>
+              <span class="tag tag-cloud">GitHub Actions</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Python</span>
+            </div>
+            <div class="project-year">2026</div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-card-header">
+              <span class="project-num">02</span>
+              <a href="https://github.com/krishnabhattad" target="_blank" class="project-link">GitHub ↗</a>
+            </div>
+            <h3 class="project-title">Full-Stack Task Management App</h3>
+            <p class="project-desc">
+              Responsive task tracker with JWT authentication, full CRUD, task categorisation,
+              status tracking, and a mobile-first UI on the MERN stack with real-time updates.
+            </p>
+            <div class="project-tech">
+              <span class="tag tag-front">React</span>
+              <span class="tag tag-back">Node.js</span>
+              <span class="tag tag-back">Express</span>
+              <span class="tag tag-db">MongoDB</span>
+              <span class="tag tag-back">JWT</span>
+            </div>
+            <div class="project-year">2026</div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-card-header">
+              <span class="project-num">03</span>
+              <a href="https://github.com/krishnabhattad" target="_blank" class="project-link">GitHub ↗</a>
+            </div>
+            <h3 class="project-title">Secure Authentication System</h3>
+            <p class="project-desc">
+              JWT-based auth hardened against XSS and CSRF. Includes input validation and
+              secure password hashing with bcrypt and a clean login/registration UI.
+            </p>
+            <div class="project-tech">
+              <span class="tag tag-front">React</span>
+              <span class="tag tag-back">Node.js</span>
+              <span class="tag tag-back">bcrypt</span>
+              <span class="tag tag-back">JWT</span>
+            </div>
+            <div class="project-year">2025</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EXPERIENCE ══ -->
+    <section class="section section-alt" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">04</span>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-body">
+              <div class="timeline-meta">
+                <span class="timeline-role">Full-Stack Developer Intern</span>
+                <span class="timeline-company">Bigsibucks Innovation</span>
+              </div>
+              <p class="timeline-desc">
+                Contributed to full-stack web development projects. Built and maintained
+                frontend interfaces and backend APIs as part of a product development team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ EDUCATION ══ -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">05</span>
+          <h2 class="section-title">Education</h2>
+        </div>
+        <div class="edu-card">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-body">
+            <h3 class="edu-school">St. Joseph's College of Engineering, Chennai</h3>
+            <p class="edu-degree">B.Tech in Information Technology</p>
+            <p class="edu-meta">2023 – 2027 (Expected) &nbsp;·&nbsp; CGPA: 7.54 / 10.0</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CERTIFICATIONS ══ -->
+    <section class="section section-alt" id="certifications">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">06</span>
+          <h2 class="section-title">Certifications</h2>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <span class="cert-icon">📊</span>
+            <span class="cert-name">Database Management System</span>
+            <span class="cert-issuer">NPTEL</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-icon">🐍</span>
+            <span class="cert-name">Python for Data Science</span>
+            <span class="cert-issuer">NPTEL</span>
+          </div>
+          <div class="cert-card">
+            <span class="cert-icon">☁</span>
+            <span class="cert-name">AWS Academy Graduate</span>
+            <span class="cert-issuer">Introduction to Cloud · Amazon Web Services</span>
+          </div>
+          <div class="cert-card cert-inprogress">
+            <span class="cert-icon">⏳</span>
+            <span class="cert-name">AWS Cloud Practitioner CLF-C02</span>
+            <span class="cert-issuer">In Progress · Amazon Web Services</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CONTACT ══ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">07</span>
+          <h2 class="section-title">Contact</h2>
+        </div>
+        <div class="contact-body">
+          <p class="contact-intro">
+            Actively looking for cloud engineering internships and full-time roles.
+            If you're hiring or want to collaborate, reach out.
+          </p>
+          <div class="contact-links">
+            <a href="mailto:Krishna19bhattad@gmail.com" class="contact-item">
+              <span class="contact-icon">✉</span>
+              <span>Krishna19bhattad@gmail.com</span>
+            </a>
+            <a href="https://www.linkedin.com/in/krishna-bhattad-j-06291b2a9" target="_blank" class="contact-item">
+              <span class="contact-icon">in</span>
+              <span>linkedin.com/in/krishna-bhattad</span>
+            </a>
+            <a href="https://github.com/kris182" target="_blank" class="contact-item">
+              <span class="contact-icon">gh</span>
+              <span>github.com/krishna bhattad J</span>
+            </a>
+            <a href="tel:+919840053951" class="contact-item">
+              <span class="contact-icon">☏</span>
+              <span>+91 98400 53951</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-name">Krishna Bhattad</span>
+      <span class="footer-copy">Built with HTML &amp; CSS · Deployed on AWS S3</span>
+      <span class="footer-updated">Updated Mar 2026</span>
     </div>
-    <!-- END VISITOR COUNTER -->
+  </footer>
 
+  <script>
+    /* ── Sticky navbar: add shadow/blur on scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
 
-    <!-- ═══════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════ -->
-    <footer class="text-center text-slate-mid text-xs py-6 border-t border-slate-200 mt-2">
-      Built as part of the <span class="text-teal-primary font-medium">AWS Cloud Resume Challenge</span> • 2026
-    </footer>
+    /* ── Mobile nav toggle ── */
+    const toggle   = document.getElementById('navToggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      toggle.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(a =>
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.classList.remove('active');
+      })
+    );
 
-  </div>
-  <!-- END Page Wrapper -->
-<script>
-  fetch('https://sf7r6zrgyk.execute-api.ap-south-2.amazonaws.com/visitor-counter')
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById('visitor-count').textContent = data.count;
-    })
-    .catch(err => console.error('Counter failed:', err));
-</script>
+    /*
+      ── VISITOR COUNTER ──────────────────────────────────────
+      Calls your AWS API Gateway endpoint which triggers a Lambda
+      function that increments the count in DynamoDB and returns it.
+
+      HOW IT WORKS:
+        1. fetch() hits the API Gateway URL
+        2. Lambda runs, increments DynamoDB item
+        3. Lambda returns { "count": <number> }
+        4. We display that number in #visitor-count
+
+      TO ACTIVATE: replace YOUR_API_GATEWAY_URL_HERE with your
+      real endpoint URL after completing Step 7 (Lambda + API Gateway).
+      ─────────────────────────────────────────────────────────
+    */
+    async function getVisitorCount() {
+      try {
+        const response = await fetch("YOUR_API_GATEWAY_URL_HERE");
+        const data     = await response.json();
+        document.getElementById("visitor-count").innerText = data.count;
+      } catch (error) {
+        // Shows a dash if the API isn't deployed yet
+        document.getElementById("visitor-count").innerText = "—";
+      }
+    }
+    getVisitorCount();
+  </script>
+
 </body>
 </html>
